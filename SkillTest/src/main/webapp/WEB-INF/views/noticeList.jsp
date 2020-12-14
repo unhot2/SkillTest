@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Notice List</title>
 <!-- 공통 파일 include -->
-<%@ include file="common.jspf" %>
+<%@ include file="common.jspf"%>
 <!-- CSS 파일 -->
 <link rel="stylesheet" href="resources/css/noticeList.css">
 </head>
@@ -68,8 +68,7 @@
 						<td><input type="checkbox" name="notice_num" class="chk"
 							value="${list.notice_num }"></td>
 						<td>${list.company }</td>
-						<td>
-						<a href="javascript:hit_up('${list.notice_num }')">${list.title }</a>
+						<td><a href="javascript:hit_up('${list.notice_num }')">${list.title }</a>
 						</td>
 						<td>${list.org_file_name }</td>
 						<td>${list.hit }</td>
@@ -80,11 +79,21 @@
 			</tbody>
 		</table>
 		<div class="paging">
+		<form action="setPerPageNum" method="post" class="setPerPageForm">
+			<select name="setPerPageNum" onchange="test(this.options[this.selectedIndex].value)" class="setPerPageNum">
+				<option value='10'>페이지</option>
+				<option value='10'>10</option>
+				<option value='20'>20</option>
+				<option value='50'>50</option>
+				<option value='100'>100</option>
+			</select>
+		</form>
 			<button onclick="first_prev()">&#171;</button>
-			<button onclick="prev('${current_page}')" class="prev">&#60;</button>
-			<c:forEach begin="1" end="${page_num }" step="1" var="cnt">
+			<button onclick="prev('${paging.current_page}')" class="prev">&#60;</button>
+			<c:forEach begin="${paging.start_page }" end="${paging.end_page}"
+				step="1" var="cnt">
 				<c:choose>
-					<c:when test="${current_page == cnt }">
+					<c:when test="${paging.current_page == cnt }">
 						<button onclick="move_page('${cnt}')"
 							style="background: #2b7fbb; color: white;">${cnt }</button>
 					</c:when>
@@ -93,8 +102,8 @@
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-			<button onclick="next('${current_page}')" class="next">&#62;</button>
-			<button onclick="last_next('${page_num}')">&#187;</button>
+			<button onclick="next('${paging.current_page}')" class="next">&#62;</button>
+			<button onclick="last_next('${paging.last_page}')">&#187;</button>
 		</div>
 	</div>
 	<div class="btn-div">
@@ -104,20 +113,31 @@
 	</div>
 	<script>
 		/* 페이지 번호 < , > 비활성화 기능 */
-		$(document).ready(function() {
-			var cp = ${current_page}
-			var pn = ${page_num} 
-			$(".prev").attr("disabled", cp > 1 ? false : true)
-			$(".next").attr("disabled", cp == pn ? true : false)
-		})
+		$(document).ready(
+				function() {
+					var current_page = ${paging.current_page}
+					var last_page = ${paging.last_page}
+					$(".prev").attr("disabled",current_page > 1 ? false : true)
+					$(".next").attr("disabled",current_page == last_page ? true : false)
+				})
+			
+		/* 게시판 한번에 볼 페이지 수 설정 */		
+		function test(data){
+			location.href="setPerPageNum?pageNum="+data
+		}
+		
 		/* 조회수 올리기 */
-		function hit_up(notice_num){
+		function hit_up(notice_num) {
 			$.ajax({
 				url : 'hitUp',
 				type : 'post',
 				dataType : 'text',
-				data :{num : notice_num}
-			}).done(function(){location.href='/'})
+				data : {
+					num : notice_num
+				}
+			}).done(function() {
+				location.href = '/'
+			})
 		}
 		/* 맨앞으로 이동 */
 		function first_prev() {
@@ -134,8 +154,8 @@
 			location.href = '/?current_page=' + (nextNum + 1)
 		}
 		/* 맨뒤로 이동 */
-		function last_next(page_num) {
-			location.href = '/?current_page=' + page_num
+		function last_next(last_page) {
+			location.href = '/?current_page=' + last_page
 		}
 		/* 페이지 이동 */
 		function move_page(cnt) {
@@ -154,8 +174,10 @@
 				dataType : 'text',
 				data : {
 					deleteArr : checkArr
-				}				
-			}).done(function(){location.href='/'})
+				}
+			}).done(function() {
+				location.href = '/'
+			})
 		}
 	</script>
 </body>

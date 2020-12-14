@@ -87,6 +87,7 @@
 .btns {
 	float: right;
 	margin: 7px 38px 0 0;
+	font-weight: bold;
 }
 /* 저장, 목록버튼 설정 */
 .btns input {

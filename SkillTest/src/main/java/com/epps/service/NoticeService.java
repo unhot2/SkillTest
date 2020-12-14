@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.epps.dao.NoticeDAO;
 import com.epps.dto.NoticeDTO;
+import com.epps.dto.PagingDTO;
 import com.epps.dto.SearchDTO;
 import com.epps.util.FileUtils;
 
@@ -21,7 +22,7 @@ public class NoticeService {
 	@Autowired
 	FileUtils fileUtils;
 
-	public List<NoticeDTO> noticeList(NoticeDTO dto) {
+	public List<NoticeDTO> noticeList(PagingDTO dto) {
 		return dao.noticeList(dto);
 	}
 	
@@ -40,7 +41,6 @@ public class NoticeService {
 		return sumDate;
 	}
 
-
 	public int pageCnt() {
 		return dao.pageCnt();
 	}
@@ -51,7 +51,6 @@ public class NoticeService {
 
 	public void noticeDelete(List<Integer> deleteArr) {
 		 dao.noticeDelete(deleteArr);
-		
 	}
 
 	public void hitUp(int num) {

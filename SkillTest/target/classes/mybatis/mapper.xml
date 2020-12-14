@@ -6,15 +6,16 @@
 	<insert id="noticewirte">
 		INSERT INTO
 		notice_yungyuchoi(notice_num,company,title,content,password,announment_start,announment_end,popup_start,popup_end,popup_use,org_file_name,stored_file_name,file_size)
-		VALUES(notice_sequence.nextval,#{company},#{title},#{content},#{password},#{announment_start},#{announment_end},#{popup_start},#{popup_end},#{popup_use},#{org_file_name},#{stored_file_name},#{file_size})
+		VALUES(notice_seq_yungyuchoi.nextval,#{company},#{title},#{content},#{password},#{announment_start},#{announment_end},#{popup_start},#{popup_end},#{popup_use},#{org_file_name},#{stored_file_name},#{file_size})
 	</insert>
 	
 	<!-- 글 목록 SQL문 -->
 	<select id="noticeList" resultType="NoticeDTO">
-		SELECT b.* FROM(SELECT rownum
-		rn,a.* FROM(SELECT notice_num,company,title,org_file_name,hit,writer,regdate 
+		SELECT b.* FROM(SELECT rownum rn,a.* FROM(
+		SELECT notice_num,company,title,org_file_name,hit,writer,regdate 
 		FROM notice_yungyuchoi ORDER BY notice_num desc)a)b
-		WHERE rn BETWEEN (#{current_page}-1)*#{range_size}+1 AND #{current_page}*#{range_size}
+		WHERE rn BETWEEN (#{current_page}-1)*#{per_page_num} AND (#{current_page}*#{per_page_num})-1
+		
 	</select>
 	
 	<!-- 게시글 개수 SQL문 -->

@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 /* 테이블 마우스오버 이벤트 */
 .table>tbody tr:hover {
 	background: #dbdbdb38;
@@ -123,8 +121,23 @@
 	text-align: center;
 }
 
+/* 테이블 내용 제목 제외한 컬럼 가운데 정렬 */
 tbody td:nth-child(1), tbody td:nth-child(2), tbody td:nth-child(3),
 	tbody td:nth-child(4), tbody td:nth-child(5), tbody td:nth-child(6),
 	tbody td:nth-child(7) {
 	text-align: center;
+}
+
+/* 페이지 수 설정 폼 설정 */
+.setPerPageForm {
+	height: 0;
+}
+
+/* 페이지 수 설정 selectbox 설정 */
+.setPerPageNum {
+	position: relative;
+	left: -816px;
+	width: 174px;
+	height: 27px;
+	border: 1px solid #dbdbdb;
 }
