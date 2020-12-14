@@ -41,12 +41,12 @@ public class NoticeController {
 	@RequestMapping("noticeWrite")
 	public String noticeWrite(NoticeDTO dto, MultipartHttpServletRequest mpRequest, HttpServletRequest request)
 			throws Exception {
-		/*
-		 * final String title = dto.getTitle(); final String content = dto.getContent();
-		 * final String org_file_name = dto.getOrg_file_name(); for (int i = 1; i < 45;
-		 * i++) { dto.setTitle(title + i); service.noticeWrite(dto, mpRequest, request);
-		 * Thread.sleep(150); }
-		 */
+		
+		  final String title = dto.getTitle(); final String content = dto.getContent();
+		  final String org_file_name = dto.getOrg_file_name(); for (int i = 1; i < 45;
+		  i++) { dto.setTitle(title + i); service.noticeWrite(dto, mpRequest, request);
+		  Thread.sleep(150); }
+		 
 		service.noticeWrite(dto, mpRequest, request);
 		return "redirect:/";
 	}

@@ -68,7 +68,7 @@
 						<td><input type="checkbox" name="notice_num" class="chk"
 							value="${list.notice_num }"></td>
 						<td>${list.company }</td>
-						<td><a href="javascript:hit_up('${list.notice_num }')">${list.title }</a>
+						<td><a href="javascript:hit_up('${list.notice_num}')">${list.title }</a>
 						</td>
 						<td>${list.org_file_name }</td>
 						<td>${list.hit }</td>
@@ -109,7 +109,6 @@
 	<div class="btn-div">
 		<a class="btns" href="noticeWriteForm">등록</a> <a class="btns" href="#">수정</a>
 		<label onclick="if(confirm('삭제 하시겠습니까?')){noticeDel()}" class="btns">삭제</label>
-		<a class="btns" href="/">목록</a>
 	</div>
 	<script>
 		/* 페이지 번호 < , > 비활성화 기능 */
@@ -128,6 +127,7 @@
 		
 		/* 조회수 올리기 */
 		function hit_up(notice_num) {
+			var current_page = ${paging.current_page}
 			$.ajax({
 				url : 'hitUp',
 				type : 'post',
@@ -136,7 +136,7 @@
 					num : notice_num
 				}
 			}).done(function() {
-				location.href = '/'
+				location.href = '/?current_page='+current_page
 			})
 		}
 		/* 맨앞으로 이동 */

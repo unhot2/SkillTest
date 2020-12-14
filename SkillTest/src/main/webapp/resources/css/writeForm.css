@@ -97,3 +97,45 @@
 	padding: 6px 16px;
 	background-color: transparent;
 }
+
+/* input file 설정 */
+.file_input_textbox {
+	float: left;
+	margin: 6px 0 0 0;
+	border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 5px;
+}
+/* input file 설정 */
+.file_input_div {
+	position: relative;
+	width: 30px;
+	height: 26px;
+	overflow: hidden;
+}
+/* input file 설정 */
+.file_input_button {
+	width: 100px;
+	position: absolute;
+	top: 0px;
+	color: #FFFFFF;
+	border-style: solid;
+}
+/* input file 설정 */
+.file_input_hidden {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	-ms-filter: "alpha(opacity=0)";
+	-khtml-opacity: 0;
+	-moz-opacity: 0;
+}
+/* input file 이모티콘 설정 */
+.file_input_div.glyphicon.glyphicon-floppy-open {
+	font-size: 21px;
+	margin: 8px 0 0 11px;
+}

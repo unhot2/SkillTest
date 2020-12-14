@@ -5,7 +5,7 @@
 <head>
 <title>Notice Write</title>
 <!-- 공통 파일 include -->
-<%@ include file="common.jspf" %>
+<%@ include file="common.jspf"%>
 <!-- CSS 파일 -->
 <link rel="stylesheet" href="resources/css/writeForm.css">
 <!-- TinyMCE -->
@@ -50,8 +50,12 @@
 				</div>
 				<div class="col-lg-1 text">파일 첨부</div>
 				<div class="col-lg-2">
-					<div class="filebox">
-						<input type="file" name="file">
+					<input type="text" id="fileName" class="file_input_textbox"
+						readonly="readonly">
+
+					<div class="file_input_div glyphicon glyphicon-floppy-open">
+					<input type="file" name="file" class="file_input_hidden"
+							onchange="javascript: document.getElementById('fileName').value = this.value" />
 					</div>
 
 				</div>
@@ -135,7 +139,8 @@
 				</div>
 				<div class="col-lg-1 text">팝업여부</div>
 				<div class="col-lg-5">
-					<input type="checkbox" class="form-check-input text" name="popup_use" value="1" checked />
+					<input type="checkbox" class="form-check-input text"
+						name="popup_use" value="1" checked />
 				</div>
 			</div>
 			<div class="row">
@@ -156,8 +161,7 @@
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-					</select> 
-					<select name="popup_start_minute" class="time-select">
+					</select> <select name="popup_start_minute" class="time-select">
 						<c:set var="n" value="0" />
 						<c:forEach begin="0" end="59">
 							<c:choose>
@@ -219,7 +223,7 @@
 			</div>
 		</div>
 		<div class="btns">
-			<input type="submit" value="저장">
+			<input type="submit" value="저장"> 
 			<input type="button" value="목록" onclick="noticeList()">
 		</div>
 	</form>
@@ -228,7 +232,7 @@
 		$(document).ready(function() {
 			$(".date-form").val(new Date().toISOString().substring(0, 10))
 		})
-		
+
 		/* 게시판 목록 이동 */
 		function noticeList() {
 			location.href = '/'
