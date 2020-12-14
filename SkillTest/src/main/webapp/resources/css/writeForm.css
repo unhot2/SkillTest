@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* 정보입력 폼 설정 */
+.container {
+	margin: 5px auto;
+	padding: 0;
+}
+
+/* 정보입력폼 row 설정 */
+.notice-info>.row {
+	margin: 6px 0;
+}
+
+/* border 테두리 */
+.border-box {
+	border: 1px solid #dbdbdb;
+	border-radius: 4px;
+	width: 96%;
+}
+
+/* 글자 설정 */
+.text {
+	margin: 8px 0 0 0;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+/* 회사 선택 selectbox */
+.company-select {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+	width: 267px;
+	height: 26px;
+	margin-top: 7px;
+	padding-bottom: 5px;
+}
+/* 시간 입력폼 */
+.time-select {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+	width: 55px;
+	height: 36px;
+}
+
+/* 비밀번호 입력폼 */
+.pwd-input {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+	width: 267px;
+	margin-top: 7px;
+}
+
+/* 제목 입력폼 */
+.title-input {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+	width: 99%;
+	margin: 7px 0 0 0;
+}
+
+/* 내용입력 폼 설정 */
+.contextbox {
+	width: 100%;
+	height: 35px;
+	background: #dbdbdb38;
+	color: #1d92d5;
+	font-weight: bold;
+	border-radius: 4px 4px 0 0;
+}
+
+/* 내용입력 라벨 설정 */
+.contextbox label {
+	margin: 7px 0;
+}
+
+/* 날짜입력창 선없애고 밑줄 */
+.date-form {
+	border: none;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+/* 저장,목록버튼 오른쪽 정렬 */
+.btns {
+	float: right;
+	margin: 7px 38px 0 0;
+}
+/* 저장, 목록버튼 설정 */
+.btns input {
+	border: 1px solid #dbdbdb;
+	text-align: center;
+	display: inline-table;
+	padding: 6px 16px;
+	background-color: transparent;
+}

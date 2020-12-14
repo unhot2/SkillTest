@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/* 메뉴 설정 */
+.top-text {
+	margin: 150px 0 10px 40px;
+	display: flex;
+}
+
+/* 메뉴 이미지 설정 */
+.top-text img {
+	width: 18px;
+	height: 18px;
+}
+
+/* 메뉴 글자 설정 */
+.top-text>div {
+	margin: -1px 0 3px 6px;
+	color: #6e6d6d;
+	font-weight: bold;
+}
+
+/* 글자색 변경 */
+.text-gr {
+	color: green;
+}

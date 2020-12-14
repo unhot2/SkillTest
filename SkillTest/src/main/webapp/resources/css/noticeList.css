@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+
+
+/* 테이블 마우스오버 이벤트 */
+.table>tbody tr:hover {
+	background: #dbdbdb38;
+}
+
+/* border 테두리 */
+.border-box {
+	border: 1px solid #dbdbdb;
+	border-radius: 4px;
+	width: 96%;
+}
+
+/* 컨테이너 설정 */
+.search-info {
+	margin: 5px auto;
+	padding: 0;
+	height: 49px;
+}
+
+/* 조회창 정렬 */
+.search-info>div {
+	display: table-cell;
+	vertical-align: middle;
+	height: 49px;
+}
+
+/* 글자 설정 */
+.text {
+	font-weight: bold;
+	font-size: 15px;
+	padding: 0 74px 0 17px;
+}
+
+/* 회사 선택 selectbox */
+.company-select {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+	width: 240px;
+	padding-bottom: 5px;
+}
+
+/* 비밀번호 입력폼 */
+.pwd-input {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+}
+
+/* 제목 및 등록자 입력폼 */
+.title-input {
+	border-width: 0;
+	border-bottom: 1px solid #dbdbdb;
+	outline: none;
+	width: 240px;
+	margin-right: 24px;
+}
+
+/* 등록일 입력폼 */
+.date-form {
+	border: none;
+	border-bottom: 1px solid #dbdbdb;
+	margin: 0 8px;
+}
+
+/* 조회버튼 */
+.search_btn {
+	text-align: right;
+	margin: 8px 38px 8px 0;
+}
+
+/* 등록,수정,삭제 버튼 설정 */
+.btn-div {
+	float: right;
+	margin: 7px 33px 0 0;
+}
+
+/* 버튼 설정 */
+.btns {
+	border: 1px solid #dbdbdb;
+	text-align: center;
+	display: inline-table;
+	padding: 6px 16px;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	background: transparent;
+}
+
+/* 페이징 설정 */
+.paging {
+	width: 100%;
+	text-align: center;
+}
+
+/* 페이징 버튼 설정 */
+.paging>button {
+	background: transparent;
+	border: 1px solid #dbdbdb;
+	padding: 6px 11px;
+	margin-bottom: 9px;
+}
+
+/* 테이블 선택 컬럼 크기조정 */
+.tb-td-1 {
+	width: 100px;
+	text-align: center;
+}
+
+/* 테이블 제목 컬럼 크기조정 */
+.tb-td-3 {
+	width: 400px;
+	text-align: center;
+}
+
+/* 테이블 회사,조회수,작성자,등록일 컬럼 크기조정 */
+.tb-td-2, .tb-td-4, .tb-td-5, .tb-td-6, .tb-td-7 {
+	width: 180px;
+	text-align: center;
+}
+
+tbody td:nth-child(1), tbody td:nth-child(2), tbody td:nth-child(3),
+	tbody td:nth-child(4), tbody td:nth-child(5), tbody td:nth-child(6),
+	tbody td:nth-child(7) {
+	text-align: center;
+}
