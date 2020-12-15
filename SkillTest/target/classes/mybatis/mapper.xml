@@ -1,43 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql">
-	
+
 	<!-- 글작성 SQL문 -->
 	<insert id="noticewirte">
 		INSERT INTO
 		notice_yungyuchoi(notice_num,company,title,content,password,announment_start,announment_end,popup_start,popup_end,popup_use,org_file_name,stored_file_name,file_size)
 		VALUES(notice_seq_yungyuchoi.nextval,#{company},#{title},#{content},#{password},#{announment_start},#{announment_end},#{popup_start},#{popup_end},#{popup_use},#{org_file_name},#{stored_file_name},#{file_size})
 	</insert>
-	
+
 	<!-- 글 목록 SQL문 -->
 	<select id="noticeList" resultType="NoticeDTO">
-		SELECT b.* FROM(SELECT rownum rn,a.* FROM(
-		SELECT notice_num,company,title,org_file_name,hit,writer,regdate 
-		FROM notice_yungyuchoi ORDER BY notice_num desc)a)b
-		WHERE rn BETWEEN (#{current_page}-1)*#{per_page_num} AND (#{current_page}*#{per_page_num})-1
-		
+		SELECT b.* FROM(SELECT rownum
+		rn,a.* FROM(
+		SELECT
+		notice_num,company,title,org_file_name,hit,writer,regdate
+		FROM
+		notice_yungyuchoi ORDER BY notice_num desc)a)b
+		WHERE rn BETWEEN
+		(#{current_page}-1)*#{per_page_num} AND
+		(#{current_page}*#{per_page_num})-1
+
 	</select>
-	
+
 	<!-- 게시글 개수 SQL문 -->
 	<select id='pageCnt' resultType="int">
-		SELECT COUNT(*) FROM notice_yungyuchoi
+		SELECT COUNT(*) FROM
+		notice_yungyuchoi
 	</select>
-	
+
 	<!-- 조회 SQL문 -->
 	<select id="search" resultType="NoticeDTO">
-		SELECT * FROM NOTICE_YUNGYUCHOI
-		WHERE company= #{search_company} AND regdate BETWEEN
-		TO_DATE(#{search_regdate_start},'YYYY-MM-DD') AND TO_DATE(#{search_regdate_end},'YYYY-MM-DD')+0.9999
-		AND title LIKE '%'||#{search_title}||'%' AND writer= #{search_writer}
+		SELECT * FROM notice_yungyuchoi
+		WHERE company= #{search_company}
+		AND regdate BETWEEN
+		TO_DATE(#{search_regdate_start},'YYYY-MM-DD') AND
+		TO_DATE(#{search_regdate_end},'YYYY-MM-DD')+0.9999
+		AND title LIKE
+		'%'||#{search_title}||'%' AND writer= #{search_writer}
 	</select>
-	
+
+
 	<!-- 글 삭제 SQL문 -->
 	<delete id="delete" parameterType="int">
-		DELETE FROM notice_yungyuchoi WHERE notice_num = #{notice_num}
+		DELETE FROM notice_yungyuchoi
+		WHERE notice_num = #{notice_num}
 	</delete>
-	
+
 	<!-- 조회수 증가 SQL문 -->
 	<update id="hitUp">
-		UPDATE notice_yungyuchoi SET hit=hit+1 WHERE notice_num=#{num} 
+		UPDATE notice_yungyuchoi SET hit=hit+1 WHERE
+		notice_num=#{num}
 	</update>
 </mapper>

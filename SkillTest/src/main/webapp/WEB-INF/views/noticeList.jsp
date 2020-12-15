@@ -12,10 +12,12 @@
 <link rel="stylesheet" href="resources/css/noticeList.css">
 </head>
 <body>
+	<!-- 메뉴 부분 -->
 	<div class="top-text">
 		<img src="resources/img/home.png">
 		<div>협업관리 > 커뮤니티 > 공지사항</div>
 	</div>
+	<!-- 조회 기능 부분 -->	
 	<form action="search" method="post">
 		<div class="search-info border-box">
 			<div class="text">회사</div>
@@ -29,12 +31,12 @@
 			</div>
 			<div class="text text-gr text">등록일</div>
 			<div>
-				<input type="date" name="search_regdate_start" class="date-form"
-					required>~
+				<input type="date" name="search_regdate_start" class="date-form" required
+					>~
 			</div>
 			<div>
-				<input type="date" name="search_regdate_end" class="date-form"
-					required>
+				<input type="date" name="search_regdate_end" class="date-form" required
+					>
 			</div>
 			<div class="text text">제목</div>
 			<div>
@@ -49,6 +51,7 @@
 			<input type="submit" class="btns" value="조회">
 		</div>
 	</form>
+	<!-- 게시판 출력 부분 -->
 	<div class="container border-box">
 		<table class="table">
 			<thead>
@@ -79,6 +82,7 @@
 			</tbody>
 		</table>
 		<div class="paging">
+		<!-- 한번에 보여줄 페이지 설정 부분 -->
 		<form action="setPerPageNum" method="post" class="setPerPageForm">
 			<select name="setPerPageNum" onchange="test(this.options[this.selectedIndex].value)" class="setPerPageNum">
 				<option value='10'>페이지</option>
@@ -88,6 +92,7 @@
 				<option value='100'>100</option>
 			</select>
 		</form>
+		<!-- 페이징 부분 -->
 			<button onclick="first_prev()">&#171;</button>
 			<button onclick="prev('${paging.current_page}')" class="prev">&#60;</button>
 			<c:forEach begin="${paging.start_page }" end="${paging.end_page}"
@@ -106,6 +111,7 @@
 			<button onclick="last_next('${paging.last_page}')">&#187;</button>
 		</div>
 	</div>
+	<!-- 하단 등록, 수정, 삭제버튼 -->
 	<div class="btn-div">
 		<a class="btns" href="noticeWriteForm">등록</a> <a class="btns" href="#">수정</a>
 		<label onclick="if(confirm('삭제 하시겠습니까?')){noticeDel()}" class="btns">삭제</label>
@@ -136,30 +142,30 @@
 					num : notice_num
 				}
 			}).done(function() {
-				location.href = '/?current_page='+current_page
+				location.href = 'list?current_page='+current_page
 			})
 		}
 		/* 맨앞으로 이동 */
 		function first_prev() {
-			location.href = '/?current_page=' + 1
+			location.href = 'list?current_page=' + 1
 		}
 		/* 이전화면 이동 */
 		function prev(current_page) {
 			var prevNum = Number(current_page)
-			location.href = '/?current_page=' + (prevNum - 1)
+			location.href = 'list?current_page=' + (prevNum - 1)
 		}
 		/* 다음화면 이동 */
 		function next(current_page) {
 			var nextNum = Number(current_page)
-			location.href = '/?current_page=' + (nextNum + 1)
+			location.href = 'list?current_page=' + (nextNum + 1)
 		}
 		/* 맨뒤로 이동 */
 		function last_next(last_page) {
-			location.href = '/?current_page=' + last_page
+			location.href = 'list?current_page=' + last_page
 		}
 		/* 페이지 이동 */
 		function move_page(cnt) {
-			location.href = '/?current_page=' + cnt
+			location.href = 'list?current_page=' + cnt
 		}
 		/* 게시글 삭제 chk된 값들을 배열에 저장해서 dao.noticeDelete()에서 
 		배열크기 만큼 반복하여 SQL문 실행 -> 클릭된 게시글 한번에 삭제 가능*/
@@ -176,7 +182,7 @@
 					deleteArr : checkArr
 				}
 			}).done(function() {
-				location.href = '/'
+				location.href = 'list'
 			})
 		}
 	</script>

@@ -25,7 +25,8 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/* 게시판 조회 */
+	@RequestMapping(value = {"/","list"}, method = RequestMethod.GET)
 	public String noticeList(Model model, PagingDTO dto) {
 		dto.setTotal_count(service.pageCnt());
 		model.addAttribute("list", service.noticeList(dto));
@@ -33,24 +34,21 @@ public class NoticeController {
 		return "noticeList";
 	}
 
+	/* 게시글 등록 폼 이동 */
 	@RequestMapping("noticeWriteForm")
 	public String noticeWriteForm() {
 		return "noticeWriteForm";
 	}
 
+	/* 게시글 등록 */
 	@RequestMapping("noticeWrite")
 	public String noticeWrite(NoticeDTO dto, MultipartHttpServletRequest mpRequest, HttpServletRequest request)
 			throws Exception {
-		
-		  final String title = dto.getTitle(); final String content = dto.getContent();
-		  final String org_file_name = dto.getOrg_file_name(); for (int i = 1; i < 45;
-		  i++) { dto.setTitle(title + i); service.noticeWrite(dto, mpRequest, request);
-		  Thread.sleep(150); }
-		 
 		service.noticeWrite(dto, mpRequest, request);
-		return "redirect:/";
+		return "redirect:list";
 	}
 
+	/* 게시글 조회 */
 	@RequestMapping("search")
 	public String search(Model model, SearchDTO dto, PagingDTO p_dto) throws ParseException {
 		List<NoticeDTO> list = service.search(dto);
@@ -60,22 +58,24 @@ public class NoticeController {
 		return "noticeList";
 	}
 
+	/* 게시글 삭제 */
 	@RequestMapping("noticeDelete")
 	@ResponseBody
 	public void noticeDelete(@RequestParam(value = "deleteArr[]") List<Integer> deleteArr) {
 		service.noticeDelete(deleteArr);
 	}
 
+	/* 게시글 조회수 */
 	@RequestMapping("hitUp")
 	@ResponseBody
 	public void hitUp(@RequestParam(value = "num") int num) {
 		service.hitUp(num);
 	}
 
+	/* 게시판 한번에 보여줄 페이지 값 설정 */
 	@RequestMapping("setPerPageNum")
 	public String setPerPageNum(@RequestParam("pageNum") int pageNum) {
-		System.out.println(pageNum);
 		NoticeController.per_page_num = pageNum;
-		return "redirect:/";
+		return "redirect:list";
 	}
 }

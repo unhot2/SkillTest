@@ -27,7 +27,8 @@ public class NoticeDAO {
 	}
 
 	public List<NoticeDTO> search(SearchDTO dto) {
-		return session.selectList("sql.search", dto);
+		List<NoticeDTO> list = session.selectList("sql.search", dto);
+		return list;
 	}
 
 	public void noticeDelete(List<Integer> deleteArr) {

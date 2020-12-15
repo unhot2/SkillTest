@@ -32,10 +32,12 @@
 </script>
 </head>
 <body>
+	<!-- 메뉴 부분 -->
 	<div class="top-text">
 		<img src="resources/img/home.png">
 		<div>협업관리 > 커뮤니티 > 공지사항 작성</div>
 	</div>
+	<!-- 입력 폼 상단 부분 -->
 	<form action="noticeWrite" method="post" enctype="multipart/form-data">
 		<div class="container notice-info border-box">
 			<div class="row">
@@ -64,12 +66,14 @@
 					<input type="password" name="password" class="pwd-input">
 				</div>
 			</div>
+			<!-- 제목 부분 -->
 			<div class="row">
 				<div class="col-lg-1 text text-gr">제목</div>
 				<div class="col-lg-11">
 					<input type="text" name="title" class="title-input">
 				</div>
 			</div>
+			<!-- 공지 시작 -->
 			<div class="row">
 				<div class="col-lg-1 text text-gr">공지기간(시작)</div>
 				<div class="col-lg-2">
@@ -104,6 +108,7 @@
 						</c:forEach>
 					</select>
 				</div>
+				<!-- 공지 종료 -->
 				<div class="col-lg-1 text text-gr">공지기간(종료)</div>
 				<div class="col-lg-2">
 					<input type="date" name="announment_end_date" class="date-form">
@@ -143,6 +148,7 @@
 						name="popup_use" value="1" checked />
 				</div>
 			</div>
+			<!-- 팝업 시작 -->
 			<div class="row">
 				<div class="col-lg-1 text text-gr">팝업기간(시작)</div>
 				<div class="col-lg-2">
@@ -177,6 +183,7 @@
 						</c:forEach>
 					</select>
 				</div>
+				<!-- 팝업 종료 -->
 				<div class="col-lg-1 text text-gr">팝업기간(종료)</div>
 				<div class="col-lg-2">
 					<input type="date" name="popup_end_date" class="date-form">
@@ -212,6 +219,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 내용 입력 영역 -->
 		<div class="container border-box">
 			<div class="col-lg-12 contextbox">
 				<label>내용</label>
@@ -235,7 +243,7 @@
 
 		/* 게시판 목록 이동 */
 		function noticeList() {
-			location.href = '/'
+			location.href = 'list'
 		}
 	</script>
 </body>
